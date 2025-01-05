@@ -1,0 +1,47 @@
+// **Примечание:**  
+// Если раскладка клавиатуры по умолчанию использует **строчные буквы**,  
+// и вы хотите использовать комбинацию `Shift + q` для вызова события выхода,  
+// настройка должна выглядеть следующим образом:  
+// ```rust
+// exit: Some(( code: Char('Q'), modifiers: "SHIFT")),
+// ```
+// Символ `Char` должен быть **заглавным**, а модификатор должен быть установлен как `"SHIFT"`.
+//
+// ---
+//
+// **Примечание:**  
+// Тип `KeysList` можно найти в файле `src/keys/key_list.rs`, где перечислены все доступные клавиши.  
+// Каждая клавиша, которая **не переопределена** через файл конфигурации, будет использовать значение по умолчанию, указанное в этом файле.
+
+(
+    open_help: Some(( code: F(1), modifiers: "")),  // Открыть справку (F1, без модификаторов)
+
+    move_left: Some(( code: Char('h'), modifiers: "")),  // Перемещение влево (клавиша 'h')
+    move_right: Some(( code: Char('l'), modifiers: "")), // Перемещение вправо (клавиша 'l')
+    move_up: Some(( code: Char('k'), modifiers: "")),    // Перемещение вверх (клавиша 'k')
+    move_down: Some(( code: Char('j'), modifiers: "")),  // Перемещение вниз (клавиша 'j')
+    
+    popup_up: Some(( code: Char('p'), modifiers: "CONTROL")),  // Вызов всплывающего окна вверх (Ctrl + p)
+    popup_down: Some(( code: Char('n'), modifiers: "CONTROL")),// Вызов всплывающего окна вниз (Ctrl + n)
+    page_up: Some(( code: Char('b'), modifiers: "CONTROL")),   // Перемещение на страницу вверх (Ctrl + b)
+    page_down: Some(( code: Char('f'), modifiers: "CONTROL")), // Перемещение на страницу вниз (Ctrl + f)
+    home: Some(( code: Char('g'), modifiers: "")),             // Перейти в начало (клавиша 'g')
+    end: Some(( code: Char('G'), modifiers: "SHIFT")),         // Перейти в конец (Shift + G)
+    shift_up: Some(( code: Char('K'), modifiers: "SHIFT")),    // Перемещение вверх с выделением (Shift + K)
+    shift_down: Some(( code: Char('J'), modifiers: "SHIFT")),  // Перемещение вниз с выделением (Shift + J)
+
+    edit_file: Some(( code: Char('I'), modifiers: "SHIFT")),   // Редактирование файла (Shift + I)
+
+    status_reset_item: Some(( code: Char('U'), modifiers: "SHIFT")),  // Сброс статуса элемента (Shift + U)
+
+    diff_reset_lines: Some(( code: Char('u'), modifiers: "")), // Сброс изменений строк (клавиша 'u')
+    diff_stage_lines: Some(( code: Char('s'), modifiers: "")), // Добавление изменений строк к индексу (клавиша 's')
+
+    stashing_save: Some(( code: Char('w'), modifiers: "")),    // Сохранение stash (клавиша 'w')
+    stashing_toggle_index: Some(( code: Char('m'), modifiers: "")), // Переключение индекса stash (клавиша 'm')
+
+    stash_open: Some(( code: Char('l'), modifiers: "")),       // Открыть stash (клавиша 'l')
+
+    abort_merge: Some(( code: Char('M'), modifiers: "SHIFT")), // Отмена слияния (Shift + M)
+)
+
