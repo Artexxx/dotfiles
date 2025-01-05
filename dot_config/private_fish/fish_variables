@@ -1,13 +1,14 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/functions/_autopair_backspace\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_left\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_right\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_same\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_tab\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/autopair\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_nickeb96_2F_puffer_2D_fish_files:\x7e/\x2econfig/fish/functions/_puffer_fish_expand_bang\x2efish\x1e\x7e/\x2econfig/fish/functions/_puffer_fish_expand_dots\x2efish\x1e\x7e/\x2econfig/fish/functions/_puffer_fish_expand_lastarg\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/puffer_fish_key_bindings\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eurbainvaes/fzf\x2dmarks\x1enickeb96/puffer\x2dfish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1eurbainvaes/fzf\x2dmarks\x1enickeb96/puffer\x2dfish\x1ejorgebucaran/autopair\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _fisher_urbainvaes_2F_fzf_2D_marks_files:\x7e/\x2econfig/fish/conf\x2ed/fzf\x2dmarks\x2eplugin\x2efish
 SETUVAR _tide_left_items:os\x1epwd\x1egit\x1enewline\x1echaracter
-SETUVAR _tide_prompt_14840:\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b37m\ue0b2\x1b\x5b30m\x1b\x5b47m\x20\uf312\x20\x1b\x5b37m\x1b\x5b44m\ue0bc\x1b\x5b44m\x20\x40PWD\x40\x20\x1b\x5b34m\x1b\x5b42m\ue0bc\x1b\x5b42m\x20\x1b\x5b30m\uf1d3\x20\x1b\x5b37m\x1b\x5b30mmain\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b32m\ue0b0\x1e\x1b\x5b91m\u276f
+SETUVAR _tide_prompt_14840:\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b37m\ue0b2\x1b\x5b30m\x1b\x5b47m\x20\uf312\x20\x1b\x5b37m\x1b\x5b44m\ue0bc\x1b\x5b44m\x20\x40PWD\x40\x20\x1b\x5b34m\x1b\x5b42m\ue0bc\x1b\x5b42m\x20\x1b\x5b30m\uf1d3\x20\x1b\x5b37m\x1b\x5b30mmain\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x1b\x5b30m\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b32m\ue0b0\x1e\x1b\x5b92m\u276f
 SETUVAR _tide_prompt_16024:\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b37m\ue0b2\x1b\x5b30m\x1b\x5b47m\x20\uf312\x20\x1b\x5b37m\x1b\x5b44m\ue0bc\x1b\x5b44m\x20\x40PWD\x40\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b34m\ue0b0\x1e\x1b\x5b92m\u276f\x1e\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b33m\ue0b2\x1b\x5b30m\x1b\x5b43m\x20\uf252\x202m\x2052s\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b33m\ue0b0
 SETUVAR _tide_right_items:status\x1ecmd_duration\x1econtext\x1ejobs\x1enode\x1epython\x1erustc\x1ego
 SETUVAR fish_color_autosuggestion:brblack
