@@ -83,6 +83,7 @@ set -x LC_CTYPE en_US.UTF-8
 
 # User configs
 source "$HOME/.config/fish/aliases.fish"
+source "$HOME/.config/fish/fzf.fish"
 source "$HOME/.config/fish/utils.fish"
 
 # XDG Base Directory Specification
