@@ -1,8 +1,23 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
+###############################################################################
+#                    НЕИНТЕРАКТИВНЫЙ БЛОК (глобальные env)
+###############################################################################
+
+# XDG Base Directory Specification
+set -Ux XDG_CONFIG_HOME $HOME/.config
+set -Ux XDG_DATA_HOME $HOME/.local/share
+set -Ux XDG_CACHE_HOME $HOME/.cache
+set -Ux XDG_STATE_HOME $HOME/.local/state
+
+# Если логин-оболочка, расширяем PATH
+if status --is-login
+    set -gx PATH $PATH ~/.bin
+    set -gx PATH $PATH ~/.local/bin
+    set -gx PATH $PATH $HOME/.foundry/bin
 end
 
-set -g fish_greeting ""
+# Add .local/bin to `PATH`
+mkdir -p "$HOME/.local/bin"
+fish_add_path "$HOME/.local/bin"
 
 # sets tools
 set -x EDITOR nvim
@@ -12,21 +27,10 @@ set -g TERM kitty
 set TERM "xterm-kitty"
 set MANPAGER "nvim +Man!"
 
-# Prevent directories names from being shortened
-set fish_prompt_pwd_dir_length 0
-set -x FZF_DEFAULT_OPTS "--color=16,header:13,info:5,pointer:3,marker:9,spinner:1,prompt:5,fg:7,hl:14,fg+:3,hl+:9 --inline-info --tiebreak=end,length --bind=shift-tab:toggle-down,tab:toggle-up"
-
-set -g theme_nerd_fonts yes
-
+# Если установлен bat -> alias cat=bat
 if type -q bat
     alias cat="bat --paging=never"
     set -x -U BAT_THEME "base16"
-end
-
-if status --is-login
-    set -gx PATH $PATH ~/.bin
-    set -gx PATH $PATH ~/.local/bin
-    set -gx PATH $PATH $HOME/.foundry/bin
 end
 
 # go
@@ -43,6 +47,9 @@ set -x PATH "$HOME/.cargo/bin" $PATH
 # haskell
 set -x PATH "$HOME/.cabal/bin" $PATH
 
+###############################################################################
+#                   (Закомментированные цветовые настройки Fish)
+###############################################################################
 # colors to set or unset
 # set fish_color_autosuggestion "#969896"
 # set fish_color_cancel -r
@@ -74,8 +81,28 @@ set -x PATH "$HOME/.cabal/bin" $PATH
 # set fish_pager_color_progress brwhite --background=cyan
 # set fish_color_search_match --background="#60AEFF"
 
+###############################################################################
+#                 ИНТЕРАКТИВНЫЙ БЛОК
+###############################################################################
 if status is-interactive
-    set -U tide_vi_mode_bg_color_default ff00ff  
+    # Отключаем приветствие
+    set -g fish_greeting ""
+
+    # Предотвращаем сокращение имен директорий в prompt
+    set fish_prompt_pwd_dir_length 0
+
+    # FZF настройки 
+    set -x FZF_DEFAULT_OPTS \
+        "--color=16,header:13,info:5,pointer:3,marker:9,spinner:1,prompt:5,fg:7,hl:14,fg+:3,hl+:9 \
+         --inline-info \
+         --tiebreak=end,length \
+         --bind=shift-tab:toggle-down,tab:toggle-up"
+
+    # Подключаем nerd fonts тему
+    set -g theme_nerd_fonts yes
+
+    # Настройки Tide + vi mode
+    set -U tide_vi_mode_bg_color_default ff00ff
     set -U tide_vi_mode_color_default ffffff
     set -U tide_vi_mode_icon_default 󰊠
     set -U tide_vi_mode_bg_color_insert 5f3fff
@@ -86,41 +113,27 @@ if status is-interactive
     set -U tide_vi_mode_icon_replace 󱥒
     set -U tide_vi_mode_bg_color_visual 03edf9
     set -U tide_vi_mode_icon_visual 
+
+    # Run fish_vi_key_bindings to start vi mode
+    function fish_user_key_bindings
+        fish_vi_key_bindings
+        bind -M insert \cn accept-autosuggestion
+        bind \cn accept-autosuggestion
+        for mode in insert default visual
+            bind -M $mode \ck 'history --merge ; up-or-search'
+            bind -M $mode \cj 'history --merge ; down-or-search'
+        end
+    end
+
+    # Языковые настройки (в интерактивном режиме)
+    set -x LC_ALL en_US.UTF-8
+    set -x LC_CTYPE en_US.UTF-8
+
+    # User configs
+    source "$HOME/.config/fish/fzf.fish"
+    source "$HOME/.config/fish/utils.fish"
+
+    zoxide init fish | source
+    thefuck --alias | source
 end
 
-#
-# Run fish_vi_key_bindings to start vi mode
-fish_vi_key_bindings 
-
-# Language Default
-set -x LC_ALL en_US.UTF-8
-set -x LC_CTYPE en_US.UTF-8
-
-# User configs
-source "$HOME/.config/fish/aliases.fish"
-source "$HOME/.config/fish/fzf.fish"
-source "$HOME/.config/fish/utils.fish"
-
-# XDG Base Directory Specification
-set -Ux XDG_CONFIG_HOME $HOME/.config
-set -Ux XDG_DATA_HOME $HOME/.local/share
-set -Ux XDG_CACHE_HOME $HOME/.cache
-set -Ux XDG_STATE_HOME $HOME/.local/state
-
-# Add .local/bin to `PATH`
-mkdir -p "$HOME/.local/bin"
-fish_add_path "$HOME/.local/bin"
-
-# XDG Base Directory Specification
-set -Ux XDG_CONFIG_HOME $HOME/.config
-set -Ux XDG_DATA_HOME $HOME/.local/share
-set -Ux XDG_CACHE_HOME $HOME/.cache
-set -Ux XDG_STATE_HOME $HOME/.local/state
-
-# Add .local/bin to `PATH`
-mkdir -p "$HOME/.local/bin"
-fish_add_path "$HOME/.local/bin"
-
-
-zoxide init fish | source
-thefuck --alias | source
