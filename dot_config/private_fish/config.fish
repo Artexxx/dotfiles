@@ -2,6 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+set -g fish_greeting ""
+
 # sets tools
 set -x EDITOR nvim
 set -x VISUAL nvim
@@ -14,7 +16,8 @@ set fish_prompt_pwd_dir_length 0
 set -x FZF_DEFAULT_OPTS "--color=16,header:13,info:5,pointer:3,marker:9,spinner:1,prompt:5,fg:7,hl:14,fg+:3,hl+:9 --inline-info --tiebreak=end,length --bind=shift-tab:toggle-down,tab:toggle-up"
 
 # "bat" as manpager
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+# set -x MANPAGER "sh -c 'col -bx | bat -l man -p --theme 'Monokai Extended''"
+set MANPAGER "nvim +Man!"
 set -g theme_nerd_fonts yes
 
 if type -q bat
@@ -44,35 +47,35 @@ set -x PATH "$HOME/.cabal/bin" $PATH
 
 # colors to set or unset
 
-set fish_color_autosuggestion "#969896"
-set fish_color_cancel -r
-set fish_color_command "#0782DE"
-set fish_color_comment "#f0c674"
-set fish_color_cwd "#008000"
-set fish_color_cwd_root red
-set fish_color_end "#b294bb"
-set fish_color_error "#fb4934"
-set fish_color_escape "#fe8019"
-set fish_color_history_current --bold
-set fish_color_host "#85AD82"
-set fish_color_host_remote yellow
-set fish_color_match --background=brblue
-set fish_color_normal normal
-set fish_color_operator "#fe8019"
-set fish_color_param "#81a2be"
-set fish_color_quote "#b8bb26"
-set fish_color_redirection "#d3869b"
-set fish_color_search_match bryellow background=brblack
-set fish_color_selection white --bold background=brblack
-set fish_color_status red
-set fish_color_user brgreen
-set fish_color_valid_path --underline
-set fish_pager_color_completion normal
-set fish_pager_color_description "#B3A06D" yellow
-set fish_pager_color_prefix normal --bold underline
-set fish_pager_color_prefix white --bold --underline
-set fish_pager_color_progress brwhite --background=cyan
-set fish_color_search_match --background="#60AEFF"
+# set fish_color_autosuggestion "#969896"
+# set fish_color_cancel -r
+# set fish_color_command "#0782DE"
+# set fish_color_comment "#f0c674"
+# set fish_color_cwd "#008000"
+# set fish_color_cwd_root red
+# set fish_color_end "#b294bb"
+# set fish_color_error "#fb4934"
+# set fish_color_escape "#fe8019"
+# set fish_color_history_current --bold
+# set fish_color_host "#85AD82"
+# set fish_color_host_remote yellow
+# set fish_color_match --background=brblue
+# set fish_color_normal normal
+# set fish_color_operator "#fe8019"
+# set fish_color_param "#81a2be"
+# set fish_color_quote "#b8bb26"
+# set fish_color_redirection "#d3869b"
+# set fish_color_search_match bryellow background=brblack
+# set fish_color_selection white --bold background=brblack
+# set fish_color_status red
+# set fish_color_user brgreen
+# set fish_color_valid_path --underline
+# set fish_pager_color_completion normal
+# set fish_pager_color_description "#B3A06D" yellow
+# set fish_pager_color_prefix normal --bold underline
+# set fish_pager_color_prefix white --bold --underline
+# set fish_pager_color_progress brwhite --background=cyan
+# set fish_color_search_match --background="#60AEFF"
 
 # Run fish_vi_key_bindings to start vi mode
 fish_vi_key_bindings 
@@ -105,6 +108,12 @@ set -Ux XDG_STATE_HOME $HOME/.local/state
 # Add .local/bin to `PATH`
 mkdir -p "$HOME/.local/bin"
 fish_add_path "$HOME/.local/bin"
+
+
+function show_error
+    command bat --paging=always --style=plain --color=always (status filename ^/dev/stdout 2>&1)
+end
+
 
 zoxide init fish | source
 thefuck --alias | source
