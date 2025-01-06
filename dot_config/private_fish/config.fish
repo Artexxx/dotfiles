@@ -10,14 +10,12 @@ set -x VISUAL nvim
 set -g EDITOR nvim
 set -g TERM kitty
 set TERM "xterm-kitty"
+set MANPAGER "nvim +Man!"
 
 # Prevent directories names from being shortened
 set fish_prompt_pwd_dir_length 0
 set -x FZF_DEFAULT_OPTS "--color=16,header:13,info:5,pointer:3,marker:9,spinner:1,prompt:5,fg:7,hl:14,fg+:3,hl+:9 --inline-info --tiebreak=end,length --bind=shift-tab:toggle-down,tab:toggle-up"
 
-# "bat" as manpager
-# set -x MANPAGER "sh -c 'col -bx | bat -l man -p --theme 'Monokai Extended''"
-set MANPAGER "nvim +Man!"
 set -g theme_nerd_fonts yes
 
 if type -q bat
@@ -46,7 +44,6 @@ set -x PATH "$HOME/.cargo/bin" $PATH
 set -x PATH "$HOME/.cabal/bin" $PATH
 
 # colors to set or unset
-
 # set fish_color_autosuggestion "#969896"
 # set fish_color_cancel -r
 # set fish_color_command "#0782DE"
@@ -77,6 +74,21 @@ set -x PATH "$HOME/.cabal/bin" $PATH
 # set fish_pager_color_progress brwhite --background=cyan
 # set fish_color_search_match --background="#60AEFF"
 
+if status is-interactive
+    set -U tide_vi_mode_bg_color_default ff00ff  
+    set -U tide_vi_mode_color_default ffffff
+    set -U tide_vi_mode_icon_default 󰊠
+    set -U tide_vi_mode_bg_color_insert 5f3fff
+    set -U tide_vi_mode_color_insert ffffff
+    set -U tide_vi_mode_icon_insert 󰢚
+    set -U tide_vi_mode_bg_color_replace 038AF9
+    set -U tide_vi_mode_color_replace ffffff
+    set -U tide_vi_mode_icon_replace 󱥒
+    set -U tide_vi_mode_bg_color_visual 03edf9
+    set -U tide_vi_mode_icon_visual 
+end
+
+#
 # Run fish_vi_key_bindings to start vi mode
 fish_vi_key_bindings 
 
@@ -108,11 +120,6 @@ set -Ux XDG_STATE_HOME $HOME/.local/state
 # Add .local/bin to `PATH`
 mkdir -p "$HOME/.local/bin"
 fish_add_path "$HOME/.local/bin"
-
-
-function show_error
-    command bat --paging=always --style=plain --color=always (status filename ^/dev/stdout 2>&1)
-end
 
 
 zoxide init fish | source

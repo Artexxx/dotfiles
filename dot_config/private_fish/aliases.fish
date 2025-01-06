@@ -435,5 +435,3 @@ function personal
     cp -rf /personal/ ~
     cp -rf /personal/.* ~
 end
-
-

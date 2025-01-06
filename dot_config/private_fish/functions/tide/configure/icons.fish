@@ -1,8 +1,8 @@
 tide_aws_icon  # Actual aws glyph is harder to see
-tide_character_icon ❯
-tide_character_vi_icon_default ❮
-tide_character_vi_icon_replace ▶
-tide_character_vi_icon_visual V
+tide_character_icon λ
+tide_character_vi_icon_default λ
+tide_character_vi_icon_replace λ
+tide_character_vi_icon_visual λ
 tide_cmd_duration_icon
 tide_crystal_icon 
 tide_direnv_icon ▼

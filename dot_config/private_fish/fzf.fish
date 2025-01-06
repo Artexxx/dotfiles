@@ -129,6 +129,3 @@ bind \e\co  '
     --prompt "1. ripgrep> " \
     --delimiter : \
     --bind "enter:become(nvim {1} +{2})"'
-
-
-
