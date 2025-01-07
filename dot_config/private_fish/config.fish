@@ -129,9 +129,9 @@ if status is-interactive
     set -x LC_ALL en_US.UTF-8
     set -x LC_CTYPE en_US.UTF-8
 
-    # User configs
     source "$HOME/.config/fish/fzf.fish"
     source "$HOME/.config/fish/utils.fish"
+    source "$HOME/.config/fish/pyenv.fish"
 
     zoxide init fish | source
     thefuck --alias | source

@@ -12,7 +12,7 @@ alias vi="nvim"
 # File managers
 #######################################
 alias ra="ranger"
-alias joshuto="jo"
+alias jo="joshuto"
 
 # Other
 #######################################
