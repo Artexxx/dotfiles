@@ -129,6 +129,19 @@ if status is-interactive
     set -x LC_ALL en_US.UTF-8
     set -x LC_CTYPE en_US.UTF-8
 
+    # Autostart zellij
+    if not set -q ZELLIJ
+        if test "$ZELLIJ_AUTO_ATTACH" = "true"
+            zellij attach -c
+        else
+            zellij
+        end
+
+        if test "$ZELLIJ_AUTO_EXIT" = "true"
+            kill $fish_pid
+        end
+    end  
+
     source "$HOME/.config/fish/fzf.fish"
     source "$HOME/.config/fish/utils.fish"
     source "$HOME/.config/fish/pyenv.fish"
