@@ -110,3 +110,7 @@ function extract --description "Expand or extract bundled & compressed files"
   end
 end
 
+function cheat
+    $HOME/.config/fish/cheat.sh $argv
+end 
+
